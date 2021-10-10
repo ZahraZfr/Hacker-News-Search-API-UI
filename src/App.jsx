@@ -2,6 +2,8 @@ import './App.css';
 import axios from 'axios';
 import { useEffect , useState } from "react";
 import React from "react";
+import Header from './component/Header';
+
 function App() {
   const [users , setUsers] = useState([]);
   useEffect(() => {
@@ -16,7 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
+      <Header />
+      <ul className="bg-red-200">
         {users.map(news =>{
           return <div><a href= {news.url}><p key={news.id}> {news.title}</p></a><p>{news.author}</p> </div>
                   
