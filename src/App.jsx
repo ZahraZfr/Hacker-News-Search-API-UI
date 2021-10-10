@@ -3,20 +3,23 @@ import axios from 'axios';
 import { useEffect , useState } from "react";
 import React from "react";
 function App() {
-  const [users , setUsers] = useState([])
+  const [users , setUsers] = useState([]);
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users")
+    axios.get("http://hn.algolia.com/api/v1/search?query=")
     .then(res => {
-      setUsers(res.data);
+      setUsers(res.data.hits);
+      console.log(res.data.hits);
     })
     .catch();
   },[]);
 
+
   return (
     <div className="App">
       <ul>
-        {users.map(users =>{
-          return <li key={users.id}>{users.name}</li>
+        {users.map(news =>{
+          return <div><a href= {news.url}><p key={news.id}> {news.title}</p></a><p>{news.author}</p> </div>
+                  
         })}
       </ul>
     </div>
