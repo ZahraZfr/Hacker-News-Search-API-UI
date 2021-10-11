@@ -13,7 +13,6 @@ function App() {
       .get("http://hn.algolia.com/api/v1/search_by_date?tags=story")
       .then((res) => {
         setUsers(res.data.hits);
-        // console.log(res.data.hits);
       })
       .catch();
   }, []);
