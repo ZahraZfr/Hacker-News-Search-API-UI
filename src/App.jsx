@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Header from "./component/Header";
 import Main from "./component/Main";
+import Footer from "./component/Footer";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -21,6 +22,7 @@ function App() {
     <div className="App">
       <Header />
       <Main users = {users}/>
+      <Footer />
     </div>
   );
 }
