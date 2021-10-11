@@ -1,0 +1,32 @@
+{
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": ["react"],
+    "extends": [
+      "plugin:react/recommended"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "rules": {
+      "arrow-body-style": "off",
+      "prefer-arrow-callback": "off",
+      "react/no-deprecated": "warn",
+      "react/prop-types": "off",
+      "react/display-name": "warn",
+      "react/jsx-key": "warn",
+      "react/jsx-no-target-blank": "warn"
+    }
+  }
