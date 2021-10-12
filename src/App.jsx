@@ -5,6 +5,7 @@ import React from "react";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 
+
 function App() {
   // set default value
   const [source, setSource] = useState("_by_date?tags=story");
@@ -62,7 +63,7 @@ function App() {
           }}
         />
       </div>
-      <div className="bg-gray-200 mt-40 w-full">{showData(item)}</div>
+      <div className="bg-gray-200 mt-40 w-full min-h-screen">{showData(item)}</div>
       {/* footer*/}
       <Footer />
     </div>
