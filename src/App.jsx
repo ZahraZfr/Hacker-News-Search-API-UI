@@ -24,9 +24,8 @@ function App() {
       {/* header */}
       <Header />
       {/* main */}
-      <div className="bg-gray-200">
-        <div className="bg-blue-500">
-          <span className="text-blue-500 bg-white px-2 py-3.5 font-bold rounded-l-2xl ">
+      <div className="bg-blue-500 fixed -mt-20 w-full h-20">
+          <span className="text-blue-500 bg-white px-2 py-3.5 font-bold rounded-l-2xl">
             What do you want to know :{" "}
           </span>
           <input
@@ -43,6 +42,8 @@ function App() {
             }}
           />
         </div>
+      <div className="bg-gray-200 mt-40 w-full">
+        
 
         {item.map((news, index) => {
           return (
