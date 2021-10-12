@@ -3,8 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
 import Header from "./component/Header";
-import Search from "./component/Search";
-import Main from "./component/Main";
 import Footer from "./component/Footer";
 
 function App() {
@@ -23,10 +21,10 @@ function App() {
 
   return (
     <div className="App">
+      {/* header */}
       <Header />
+      {/* main */}
       <div className="bg-gray-200">
-        {/* <Search  setvalue = {setItem}/> */}
-
         <div className="bg-blue-500">
           <span className="text-blue-500 bg-white p-3.5 font-bold rounded-l-2xl  ">
             What do you want to know :{" "}
@@ -60,10 +58,7 @@ function App() {
           );
         })}
       </div>
-      {/* ------------------------------------ */}
-
-      {/* <Main item={item} /> */}
-
+      {/* footer*/}
       <Footer />
     </div>
   );
