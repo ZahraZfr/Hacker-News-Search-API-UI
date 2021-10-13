@@ -4,14 +4,14 @@ import { useContext } from "react";
 
 const Main = () => {
   let { item } = useContext(MyContext);
-  
+
   return (
-    <div className="bg-gray-200 mt-40 w-full min-h-screen ">
+    <div className="bg-gray-200 mt-36 min-h-screen flex justify-center text-center flex-wrap ">
       {item
       .filter((item) => item.title)
       .map((news, index) => {
         return (
-          <div key={index} className="p-15 p-3 text-gray-900">
+          <div key={index} className="p-15 p-3 text-gray-900 content-center w-full">
             <a className="mt-5" href={news.url}>
               <p className="font-medium"> {news.title}</p>
             </a>

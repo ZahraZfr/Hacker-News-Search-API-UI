@@ -5,12 +5,12 @@ import { useContext } from "react";
 const Header = () => {
   const {setSource} = useContext(MyContext)
   return (
-    <div className="bg-blue-500 font-sans fixed h-40 w-full -mt-40">
+    <div className="bg-blue-500 font-sans fixed h-36 w-full -mt-36">
       <div className="py-5 font-bold text-3xl text-white flex justify-center ">
         Hacker News Search
       </div>
       <div className="flex justify-center">
-        <span className="text-blue-500 bg-white px-2 py-3.5 font-bold rounded-l-2xl">
+        <span className="text-blue-500 bg-white px-2 py-3.5 h-12 font-bold rounded-l-2xl">
           What do you want to know :{" "}
         </span>
         <input
