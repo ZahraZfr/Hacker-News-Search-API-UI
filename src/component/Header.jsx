@@ -19,10 +19,11 @@ const Header = () => {
           type="search"
           onChange={(e) => {
             // get input value to search
+            
             if (e.target.value === "") {
               setSource("_by_date?tags=story");
             } else {
-              setSource(`?query=${e.target.value}}`);
+              setSource(`?query=${e.target.value}`);
             }
           }}
         />

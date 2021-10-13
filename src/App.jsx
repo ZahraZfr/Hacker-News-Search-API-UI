@@ -11,7 +11,7 @@ function App() {
   // set default value
   const [source, setSource] = useState("_by_date?tags=story");
   const [item, setItem] = useState([]);
-  const [page, setPage] = useState("0");
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     axios
