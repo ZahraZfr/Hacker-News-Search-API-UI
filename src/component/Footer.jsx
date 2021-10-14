@@ -24,7 +24,7 @@ const Footer = () => {
               setPage(page - 1);
             }
           }}
-          className="bg-white text-blue-500 py-0.5 px-1.5 m-0.5 rounded"
+          className="bg-white text-blue-500 py-0.5 px-1.5 m-0.5 rounded shadow-2xl"
         >
           Previous
         </button>
@@ -33,7 +33,7 @@ const Footer = () => {
           onClick={() => {
             setPage(page);
           }}
-          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded"
+          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl"
         >
           {page}
         </button>
@@ -42,7 +42,7 @@ const Footer = () => {
           onClick={() => {
             setPage(page + 1);
           }}
-          className="bg-white text-blue-500 m-0.5 py-0.5 px-1.5  rounded"
+          className="bg-white text-blue-500 m-0.5 py-0.5 px-1.5  rounded shadow-2xl"
         >
           Next
         </button>
@@ -50,7 +50,7 @@ const Footer = () => {
           onClick={() => {
             setPage(0);
           }}
-          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded"
+          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl"
         >
           Reset
         </button>
