@@ -52,6 +52,14 @@ const Footer = () => {
         >
           next
         </button>
+        <button
+          onClick={() => {
+            setPage(0);
+          }}
+          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded"
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
