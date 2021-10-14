@@ -4,9 +4,10 @@ import { useContext } from "react";
 
 const Footer = () => {
   let { setPage } = useContext(MyContext);
+  let { page } = useContext(MyContext);
   return (
-    <div className="px-5 py-2 bg-blue-500 text-white fixed bottom-0 w-full flex justify-between">
-      <div>
+    <div className="px-5 py-2 bg-blue-500 text-white fixed bottom-0 w-full flex justify-between  ">
+      <div className="align-middle flex justify-center mt-1">
         <a className="px-2" href="">
           FQA
         </a>
@@ -23,47 +24,29 @@ const Footer = () => {
       <div>
         <button
           onClick={() => {
-            setPage(0);
+            if (page <= 0) {
+              setPage(0);
+            } else {
+              setPage(page - 1);
+            }
           }}
           className="bg-white text-blue-500 py-0.5 px-1.5 m-0.5 rounded"
         >
           prev
         </button>
+
         <button
           onClick={() => {
-            setPage(1);
+            setPage(page);
           }}
           className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded"
         >
-          1
+          {page}
         </button>
+
         <button
           onClick={() => {
-            setPage(2);
-          }}
-          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded"
-        >
-          2
-        </button>
-        <button
-          onClick={() => {
-            setPage(3);
-          }}
-          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded"
-        >
-          3
-        </button>
-        <button
-          onClick={() => {
-            setPage(4);
-          }}
-          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded"
-        >
-          4
-        </button>
-        <button
-          onClick={() => {
-            setPage(5);
+            setPage(page + 1);
           }}
           className="bg-white text-blue-500 m-0.5 py-0.5 px-1.5  rounded"
         >

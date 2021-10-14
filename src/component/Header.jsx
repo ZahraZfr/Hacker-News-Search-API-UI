@@ -28,7 +28,7 @@ const Header = () => {
               } else {
                 setSource(`?query=${document.getElementById("input").value}`);
               }
-            }, 2000);
+            }, 300);
           }}
         />
       </div>

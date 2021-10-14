@@ -24,7 +24,7 @@ function App() {
 
 
   return (
-    <MyContext.Provider
+    <MyContext.Provider 
       value={{ item, setItem, source, setSource, page, setPage }}
     >
       <Header />
