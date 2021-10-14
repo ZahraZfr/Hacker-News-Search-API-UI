@@ -50,12 +50,12 @@ const Footer = () => {
           onClick={() => {
             setPage(0);
           }}
-          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl"
+          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl hover:bg-white hover:text-blue-500"
         >
           Reset
         </button>
       </div>
-      <div className="align-middle flex justify-center mt-1 ">
+      <div className="align-middle flex justify-center mt-1">
         <a className="px-2" href="">
           About
         </a>
