@@ -6,7 +6,7 @@ const Main = () => {
   let { item } = useContext(MyContext);
 
   return (
-    <div className="bg-gray-200 mt-36 min-h-screen flex justify-center text-center flex-wrap ">
+    <div className="bg-gray-200 tablet:mt-36 min-h-screen flex justify-center text-center flex-wrap ">
       {item
       .filter((item) => item.title)
       .map((news, index) => {

@@ -1,70 +1,183 @@
-# Getting Started with Create React App
+# Name
+hacker news search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This project show last news that exist in Hackernews.com and has search feature to show news about specific title. 
+in these project used HTML ,[tailwind framwork of CSS ](https://github.com/tailwindlabs/tailwindcss) and [axiose library of REACT ](https://github.com/axios/axios#readme) and also [Context api library](https://reactjs.org/docs/hooks-reference.html) for transfer data between components.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Use the [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) for package managing . to install package use these command :
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn init
+```
+and for show result write below command
+```bash
+yarn start
+```
 
-### `yarn test`
+## Usage
+in app.jsx file , first import library and components
+```bash
+function App() {
+  // set default value
+  const [source, setSource] = useState("_by_date?tags=story");
+  const [item, setItem] = useState([]);
+  const [page, setPage] = useState(0);
+```
+and declare a function that in it we defind our data with useState hook and show them when useEffect hook defined.
+```bash
+function App() {
+  // set default value
+  const [source, setSource] = useState("_by_date?tags=story");
+  const [item, setItem] = useState([]);
+  const [page, setPage] = useState(0);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  useEffect(() => {
+    axios
+      .get(`http://hn.algolia.com/api/v1/search${source}&page=${page}`)
+      .then((res) => {
+        setItem(res.data.hits);
+      })
+      .catch();
+  }, [source, page]);
 
-### `yarn build`
+```
+in return we have component for each section of projectthat are in MyContext tag with .Provider property. it has also value attribute that we pass data that can contains variable or function , for component access to them.
+```bash
+  return (
+    <MyContext.Provider 
+      value={{ item, setItem, source, setSource, page, setPage }}
+    >
+      <Header />
+      <Main />
+      <Footer />
+    </MyContext.Provider>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+export default App;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- in header component we have search section that get value of input and pass it to setSource function that replce with the current or defalut value that append to api
 
-### `yarn eject`
+```bash
+import { MyContext } from "./MyContext";
+import { useContext } from "react";
+```
+My context is a file that Accepts a context object (the value returned from React.createContext) and returns the current context value, as given by the nearest context provider for the given context.
+```bash
+import {createContext} from 'react';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+export const MyContext = createContext();
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default MyContext;
+```
+in every component we should what data need to use from data that defined in value attribute.
+for example in header component we need item variable.
+```bash
+  let { item } = useContext(MyContext);
+```
+in input element used onChange attribute active we value of input changed.in it we set function that have setTimeOut function that in it two argument are exist. first one is a function that check user clean value or nit. if cleared , last news Is shown and if user enter any value it will pass to setSource function. in second argument we define how much later first argument Be called.
+```bash
+<input
+          id="input"
+          className="mb-5 px-2 tablet:mx-1 w-100 tablet:rounded-r-2xl text-blue-500 font-bold border-blue-500 outline-none h-12 box-border rounded-br-2xl"
+          type="search"
+          onChange={function () {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+              // get input value to search
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+              if (document.getElementById("input").value === "") {
+                setSource("_by_date?tags=story");
+              } else {
+                setSource(`?query=${document.getElementById("input").value}`);
+              }
+            }, 300);
+          }}
+        />
+```
+- in main component , data from api is shown. data is store in item value , setSource function can change item value (in app.jsx in axios section we defind it. and filter item which doesn't have title and map them with Parameter
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- in footer component we have pagination that show user , which page To be shown.
+```bash
+        <button
+          onClick={() => {
+            if (page <= 0) {
+              setPage(0);
+            } else {
+              setPage(page - 1);
+            }
+          }}
+          className="bg-white text-blue-500 py-0.5 px-1.5 m-0.5 rounded shadow-2xl"
+        >
+          Previous
+        </button>
+```
+page is variable that contains page Parameter from  api , and change page number can be changed with the setPage function.In this function, we check that if we are on the first page, the value will not be less than zero Otherwise subtract a value from the page value.
+```bash
+        <button
+          onClick={() => {
+            setPage(page);
+          }}
+          className="bg-white text-blue-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl"
+        >
+          {page}
+        </button>
+```
+this botton show the current page number
+```bash
+        <button
+          onClick={() => {
+            setPage(page + 1);
+          }}
+          className="bg-white text-blue-500 m-0.5 py-0.5 px-1.5  rounded shadow-2xl"
+        >
+          Next
+        </button>
+```
+next botton Increases the amount with each click
+```bash
+        <button
+          onClick={() => {
+            setPage(0);
+          }}
+          className="bg-blue-800 text-white-500 py-0.5 m-0.5 px-1.5 rounded shadow-2xl hover:bg-white hover:text-blue-500"
+        >
+          Reset
+        </button>
+```
+and reset value set page value to 0 that means show the first page
+- for style of each element Used from inline style in tailwind and for reponsive the project configure  them in tailwind.config.js file
+```bash
+// tailwind.config.js
+module.exports = {
+    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+      screens: {
+        'tablet': '640px',
+        // => @media (min-width: 640px) { ... }
+  
+        'laptop': '1024px',
+        // => @media (min-width: 1024px) { ... }
+  
+        'desktop': '1280px',
+        // => @media (min-width: 1280px) { ... }
+      },
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
+  }
+```
+## Authors and acknowledgment
+- owner : Zahra Zafarzade
+- mentors : Aien Saidi , Hossein Rahimi and MohammadJavad Hasanzade
