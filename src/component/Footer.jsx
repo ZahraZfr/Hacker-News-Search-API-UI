@@ -6,7 +6,7 @@ const Footer = () => {
   let { setPage } = useContext(MyContext);
   let { page } = useContext(MyContext);
   return (
-    <div className="px-5 py-2 grid grid-cols-1 grid-rows-2  tablet:py-2 bg-blue-500 text-white fixed bottom-0 w-full tablet:flex tablet:justify-between  ">
+    <div className="px-5 py-2 grid grid-cols-1 grid-rows-2  tablet:py-2 bg-blue-500 text-white fixed bottom-0 w-full tablet:flex tablet:justify-between">
       <div className="hidden align-middle tablet:flex justify-center mt-1">
         <a className="px-2 " href="">
           FQA
