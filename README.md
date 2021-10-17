@@ -18,8 +18,8 @@ and for show result write below command
 ```bash
 yarn start
 ```
-## feature
-[https://github.com/Lo-Agency/zahra-hacker-news-search/blob/master/Annotation%202021-10-17%20203943.png]
+## screenshot
+![App Screenshot](./screenshot.png)
 
 
 ## Usage
