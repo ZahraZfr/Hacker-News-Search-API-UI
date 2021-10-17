@@ -19,8 +19,9 @@ and for show result write below command
 yarn start
 ```
 ## feature
-search option
-https://github.com/Lo-Agency/zahra-hacker-news-search/blob/master/Annotation%202021-10-17%20203943.png
+[https://github.com/Lo-Agency/zahra-hacker-news-search/blob/master/Annotation%202021-10-17%20203943.png]
+
+
 ## Usage
 in app.jsx file , first import library and components
 ```bash
